@@ -1,0 +1,54 @@
+<div align="center">
+    <div>
+        <form [formGroup]="animalForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputEspece">Espèce :</label>
+                <input type="text" class="form-control" id="inputEspece" [(ngModel)]="nouveauAnimal.espece"
+                    formControlName="espece" [ngClass]="{'is-invalid': submitted && f.espece.errors}">
+            </div>
+            <div *ngIf="submitted && f.espece.errors">
+                <label class="error">Veuillez entrer l'espèce de l'animal</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputEnclos">Enclos :</label>
+                <select class="form-control" id="inputEnclos" [(ngModel)]="nouveauEnclos.id" formControlName="enclos"
+                    [ngClass]="{'is-invalid': submitted && f.enclos.errors}">
+                    <option *ngFor="let enclos of listEnclos" [ngValue]="enclos.id">
+                        {{enclos.nom}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.enclos.errors">
+                <label class="error">Veuillez sélectionner l'enclos de l'animal</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputNbAnimal">Nombre d'animaux :</label>
+                <input type="number" class="form-control" id="inputNbAnimal" [(ngModel)]="nouveauAnimal.nbAnimal"
+                    formControlName="nbAnimal" [ngClass]="{'is-invalid': submitted && f.nbAnimal.errors}">
+            </div>
+            <div *ngIf="submitted && f.nbAnimal.errors">
+                <label class="error">Veuillez entrer le nombre d'animaux de cette espèce</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputNourriture">Nourriture :</label>
+                <select class="form-control" id="inputNourriture" [(ngModel)]="nouveauNourriture.id"
+                    formControlName="nourriture" [ngClass]="{'is-invalid': submitted && f.nourriture.errors}">
+                    <option *ngFor="let nourriture of listNourritures" [ngValue]="nourriture.id">
+                        {{nourriture.nom}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.nourriture.errors">
+                <label class="error">Veuillez sélectionner la nourriture de l'animal</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Ajouter
+                    l'animal</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" [routerLink]="['/admin/listanimal']" class="btn btn-primary">Retour à la
+                    racine</button>
+            </div>
+        </form>
+    </div>
+</div>

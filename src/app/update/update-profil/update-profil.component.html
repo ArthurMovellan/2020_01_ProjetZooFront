@@ -1,0 +1,58 @@
+<div align="center">
+    <div>
+        <form [formGroup]="personneForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputLogin">Login :</label>
+                <input type="text" class="form-control" id="inputLogin" [(ngModel)]="personnecourant.login"
+                    formControlName="login" [ngClass]="{'is-invalid': submitted && f.login.errors}">
+            </div>
+            <div *ngIf="submitted && f.login.errors">
+                <label class="error">Veuillez entrer votre nouveau login</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputNom">Nom :</label>
+                <input type="text" class="form-control" id="inputNom" [(ngModel)]="personnecourant.nom"
+                    formControlName="nom" [ngClass]="{'is-invalid': submitted && f.nom.errors}">
+            </div>
+            <div *ngIf="submitted && f.nom.errors">
+                <label class="error">Veuillez entrer votre nouveau nom</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputOldMdp">Mot de passe actuel :</label>
+                <input type="password" class="form-control" id="inputOldMdp" [(ngModel)]="oldmdp"
+                    formControlName="oldmdp" [ngClass]="{'is-invalid': submitted && f.oldmdp.errors}">
+            </div>
+            <div *ngIf="submitted && f.oldmdp.errors">
+                <label class="error">Veuillez entrer votre mot de passe actuel</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputNewMdp1">Nouveau mot de passe :</label>
+                <input type="password" class="form-control" id="inputNewMdp1" [(ngModel)]="newmdp1"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputNewMdp2">Répeter votre nouveau mot de passe :</label>
+                <input type="password" class="form-control" id="inputNewMdp2" [(ngModel)]="newmdp2"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Modifier
+                    la personne</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div *ngIf="admin">
+                    <button type="button" [routerLink]="['/admin']" class="btn btn-primary">Retour à la
+                        racine</button>
+                </div>
+                <div *ngIf="manager">
+                    <button type="button" [routerLink]="['/manager']" class="btn btn-primary">Retour à la
+                        racine</button>
+                </div>
+                <div *ngIf="personnel">
+                    <button type="button" [routerLink]="['/personnel']" class="btn btn-primary">Retour à la
+                        racine</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

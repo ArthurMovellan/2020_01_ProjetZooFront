@@ -1,0 +1,235 @@
+<div *ngIf="admin">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" class="menu" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarAnimal" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-dragon"></i>&nbsp;Animaux
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarPatient">
+                        <a class="dropdown-item" [routerLink]="['admin/ajoutanimal']"><i class="fas fa-plus"></i>&nbsp;Ajouter un animal</a>
+                        <a class="dropdown-item" [routerLink]="['admin/listanimal']"><i class="fas fa-list-ol"></i>&nbsp;Lister les animaux</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarEnclos" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-igloo"></i>&nbsp;Enclos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarEnclos">
+                        <a class="dropdown-item" [routerLink]="['admin/ajoutenclos']"><i class="fas fa-plus"></i>&nbsp;Ajouter un enclos</a>
+                        <a class="dropdown-item" [routerLink]="['admin/listenclos']"><i class="fas fa-list-ol"></i>&nbsp;Lister les enclos</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarNourriture" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bone"></i>&nbsp;Nourritures
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarNourriture">
+                        <a class="dropdown-item" [routerLink]="['admin/ajoutnourriture']"><i class="fas fa-plus"></i>&nbsp;Ajouter une nourriture</a>
+                        <a class="dropdown-item" [routerLink]="['admin/listnourriture']"><i class="fas fa-list-ol"></i>&nbsp;Lister les nourritures</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarPersonne" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-child"></i>&nbsp;Personnes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarPersonne">
+                        <a class="dropdown-item" [routerLink]="['admin/ajoutpersonne']"><i class="fas fa-plus"></i>&nbsp;Ajouter une personne</a>
+                        <a class="dropdown-item" [routerLink]="['admin/listpersonne']"><i class="fas fa-list-ol"></i>&nbsp;Lister les personnes</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarRole" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-theater-masks"></i>&nbsp;Rôles
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarRole">
+                        <a class="dropdown-item" [routerLink]="['admin/ajoutrole']"><i class="fas fa-plus"></i>&nbsp;Ajouter un rôle</a>
+                        <a class="dropdown-item" [routerLink]="['admin/listrole']"><i class="fas fa-list-ol"></i>&nbsp;Lister les rôles</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarTache" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-tasks"></i>&nbsp;Tâches
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarTache">
+                        <a class="dropdown-item" [routerLink]="['admin/ajouttache']"><i class="fas fa-plus"></i>&nbsp;Ajouter une tâche</a>
+                        <a class="dropdown-item" [routerLink]="['admin/listtache']"><i class="fas fa-list-ol"></i>&nbsp;Lister les tâches</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarZone" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-map-signs"></i>&nbsp;Zones
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarZone">
+                        <a class="dropdown-item" [routerLink]="['admin/ajoutzone']"><i class="fas fa-plus"></i>&nbsp;Ajouter une zone</a>
+                        <a class="dropdown-item" [routerLink]="['admin/listzone']"><i class="fas fa-list-ol"></i>&nbsp;Lister les zones</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarEtat" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-hourglass-half"></i>&nbsp;Etats
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarEtat">
+                        <a class="dropdown-item" [routerLink]="['admin/ajoutetat']"><i class="fas fa-plus"></i>&nbsp;Ajouter un etat</a>
+                        <a class="dropdown-item" [routerLink]="['admin/listetat']"><i class="fas fa-list-ol"></i>&nbsp;Lister les etats</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="divconnect">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-circle"></i>&nbsp;Connecté : {{nomUser}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button" [routerLink]="['planning', idPers]"><i class="fas fa-calendar-check"></i>&nbsp;Consulter le
+                        planning</button>
+                    <button class="dropdown-item" [routerLink]="['editprofil']" type="button"><i class="fas fa-user-edit"></i>&nbsp;Modifier le
+                        profil</button>
+                    <button class="dropdown-item" (click)="logout()" type="button"><i class="fas fa-sign-out-alt"></i>&nbsp;Se déconnecter</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div *ngIf="manag">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" class="menu" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarAnimal" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-dragon"></i>&nbsp;Animaux
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarPatient">
+                        <a class="dropdown-item" [routerLink]="['manager/ajoutanimal']"><i class="fas fa-plus"></i>&nbsp;Ajouter un animal</a>
+                        <a class="dropdown-item" [routerLink]="['manager/listanimal']"><i class="fas fa-list-ol"></i>&nbsp;Lister les animaux</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarEnclos" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-igloo"></i>&nbsp;Enclos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarEnclos">
+                        <a class="dropdown-item" [routerLink]="['manager/ajoutenclos']"><i class="fas fa-plus"></i>&nbsp;Ajouter un enclos</a>
+                        <a class="dropdown-item" [routerLink]="['manager/listenclos']"><i class="fas fa-list-ol"></i>&nbsp;Lister les enclos</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarNourriture" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bone"></i>&nbsp;Nourritures
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarNourriture">
+                        <a class="dropdown-item" [routerLink]="['manager/ajoutnourriture']"><i class="fas fa-plus"></i>&nbsp;Ajouter une nourriture</a>
+                        <a class="dropdown-item" [routerLink]="['manager/listnourriture']"><i class="fas fa-list-ol"></i>&nbsp;Lister les nourritures</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarNourriture" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-child"></i>&nbsp;Personnes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarNourriture">
+                        <a class="dropdown-item" [routerLink]="['manager/listpersonne']"><i class="fas fa-list-ol"></i>&nbsp;Lister les personnes</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarTache" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-tasks"></i>&nbsp;Tâches
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarTache">
+                        <a class="dropdown-item" [routerLink]="['manager/ajouttache']"><i class="fas fa-plus"></i>&nbsp;Ajouter une tâche</a>
+                        <a class="dropdown-item" [routerLink]="['manager/listtache']"><i class="fas fa-list-ol"></i>&nbsp;Lister les tâches</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="divconnect">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-circle"></i>&nbsp;Connecté : {{nomUser}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" [routerLink]="['planning', idPers]" type="button"><i class="fas fa-calendar-check"></i>&nbsp;Consulter le
+                        planning</button>
+                    <button class="dropdown-item" [routerLink]="['editprofil']" type="button"><i class="fas fa-user-edit"></i>&nbsp;Modifier le
+                        profil</button>
+                    <button class="dropdown-item" (click)="logout()" type="button"><i class="fas fa-sign-out-alt"></i>&nbsp;Se déconnecter</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div *ngIf="perso">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" class="menu" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarAnimal" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-dragon"></i>&nbsp;Animaux
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarPatient">
+                        <a class="dropdown-item" [routerLink]="['personnel/listanimal']"><i class="fas fa-list-ol"></i>&nbsp;Lister les animaux</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarEnclos" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-igloo"></i>&nbsp;Enclos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarEnclos">
+                        <a class="dropdown-item" [routerLink]="['personnel/listenclos']"><i class="fas fa-list-ol"></i>&nbsp;Lister les enclos</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarNourriture" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bone"></i>&nbsp;Nourritures
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarNourriture">
+                        <a class="dropdown-item" [routerLink]="['personnel/listnourriture']"><i class="fas fa-list-ol"></i>&nbsp;Lister les nourritures</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarTache" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-tasks"></i>&nbsp;Tâches
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarTache">
+                        <a class="dropdown-item" [routerLink]="['personnel/ajouttache']"><i class="fas fa-plus"></i>&nbsp;Ajouter une tâche</a>
+                        <a class="dropdown-item" [routerLink]="['personnel/listtache']"><i class="fas fa-list-ol"></i>&nbsp;Lister les tâches</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="divconnect">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-circle"></i>&nbsp;Connecté : {{nomUser}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button" [routerLink]="['planning', idPers]"><i class="fas fa-calendar-check"></i>&nbsp;Consulter le
+                        planning</button>
+                    <button class="dropdown-item" [routerLink]="['editprofil']" type="button"><i class="fas fa-user-edit"></i>&nbsp;Modifier le
+                        profil</button>
+                    <button class="dropdown-item" (click)="logout()" type="button"><i class="fas fa-sign-out-alt"></i>&nbsp;Se déconnecter</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

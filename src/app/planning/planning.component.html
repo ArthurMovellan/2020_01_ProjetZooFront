@@ -1,0 +1,16 @@
+<div class='app-calendar' >
+<full-calendar
+  *ngIf="options"
+  #fullcalendar
+  [events]="eventsModel"
+  [header]="options.header"
+  
+  (eventDragStop)="eventDragStop($event)"
+  [plugins]="options.plugins"
+  (eventClick)="eventClick($event)"
+  [allDaySlot]="false"
+  [locales]="options.locales"
+  [locale] = 'options.locale'
+  [firstDay]=1
+></full-calendar>
+</div>

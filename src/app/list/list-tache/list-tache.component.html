@@ -1,0 +1,67 @@
+<div class="recherche">
+  <input class="form-control mr-sm-2" type="text" name="search" [(ngModel)]="searchText"
+    placeholder="Tapez votre recherche">
+</div>
+<table class="table" align=center>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Libellé</th>
+      <th scope="col">Date de début</th>
+      <th scope="col">Date de fin</th>
+      <th scope="col">
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            État
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+    <tr *ngFor="let etat of listEtats ; let i = index">
+      <a class="dropdown-item" (click)="filter(etat, personneSearch)">{{etat.libelle}}</a>
+    </tr>
+    <a class="dropdown-item" (click)="filter(null, personneSearch)">Tout afficher</a>
+    </div>
+    </div>
+    </th>
+    <th scope="col">
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Personne
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <tr *ngFor="let personne of listPersonnes ; let i = index">
+            <a class="dropdown-item" (click)="filter(etatSearch, personne)">{{personne.nom}}</a>
+          </tr>
+          <a class="dropdown-item" (click)="filter(etatSearch, null)">Tout afficher</a>
+        </div>
+      </div>
+    </th>
+    <th scope="col">Demandeur</th>
+    <th scope="col">Actions sur la tâche</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tache of listTaches| filter:searchText ; let i = index">
+      <th scope="row">{{tache.id}}</th>
+      <td [style.background-color]="getBackgroundColor(tache)">{{tache.libelle}}</td>
+      <td>{{tache.dateDebut | date:'dd/MM/yyyy HH:mm'}}</td>
+      <td>{{tache.dateFin | date:'dd/MM/yyyy HH:mm'}}</td>
+      <td>{{tache.etat.libelle}}</td>
+      <td>{{tache.personne.nom}}</td>
+      <td>{{tache.createur.nom}}</td>
+      <td>
+          <button *ngIf="tache.etat.id == 1" type="button" (click)="OKTache(tache.id)" class="btn btn-success"
+          name="boutonOK">Marquer comme faite</button>&nbsp;
+          <button type="button" [routerLink]="['/admin/updatetache', tache.id]" class="btn btn-warning"
+          name="boutonModif">Modifier</button>&nbsp;
+        <button type="button" (click)="askfordel(tache.id,i)" class="btn btn-danger"
+          name="boutonDelete">Supprimer</button>&nbsp;
+      <button *ngIf="tache.etat.id != 3" type="button" (click)="cancelTache(tache.id)" class="btn btn-secondary"
+        name="boutonCancel">Annuler</button></td>&nbsp;
+    </tr>
+  </tbody>
+</table>
+<div align="center">
+  <button type="button" [routerLink]="['/admin']" class="btn btn-primary">Retour à la racine</button>
+</div>

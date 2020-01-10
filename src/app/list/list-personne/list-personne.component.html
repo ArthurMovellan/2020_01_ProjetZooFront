@@ -1,0 +1,37 @@
+<div class="recherche">
+  <input class="form-control mr-sm-2" type="text" name="search" [(ngModel)]="searchText" [(ngModel)]="searchText"
+    placeholder="Tapez votre recherche">
+</div>
+<table class="table" align=center>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Login</th>
+      <th scope="col">Mot de passe</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Rôle</th>
+      <th scope="col">Zone</th>
+      <th scope="col">Actions sur la personne</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let personne of listPersonnes| filter:searchText ; let i = index">
+      <th scope="row">{{personne.id}}</th>
+      <td>{{personne.login}}</td>
+      <td>{{personne.mdp}}</td>
+      <td>{{personne.nom}}</td>
+      <td>{{personne.role.libelle}}</td>
+      <td>{{personne.zone.nom}}</td>
+      <td><button type="button" [routerLink]="['/admin/updatepersonne', personne.id]" class="btn btn-warning"
+          name="boutonModif">Modifier</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" (click)="askfordel(personne.id,i)" class="btn btn-danger"
+          name="boutonDelete">Supprimer</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" [routerLink]="['/planning', personne.id]" class="btn btn-info"
+          name="boutonPlanning">Consulter le planning</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div align="center">
+  <button type="button" [routerLink]="['/admin']" class="btn btn-primary">Retour à la racine</button>
+</div>

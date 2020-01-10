@@ -1,0 +1,20 @@
+<div align="center">
+    <div>
+        <form [formGroup]="zoneForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputNom">Nom :</label>
+                <input type="text" class="form-control" id="inputNom" [(ngModel)]="zonecourant.nom"
+                    formControlName="nom" [ngClass]="{'is-invalid': submitted && f.nom.errors}">
+            </div>
+            <div *ngIf="submitted && f.nom.errors">
+                <label class="error">Veuillez entrer le nom de la zone</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Modifier la zone</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" [routerLink]="['/admin/listzone']" class="btn btn-primary">Retour à la racine</button>
+            </div>
+        </form>
+    </div>
+</div>

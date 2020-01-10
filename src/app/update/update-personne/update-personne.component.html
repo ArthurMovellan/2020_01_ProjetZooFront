@@ -1,0 +1,62 @@
+<div align="center">
+    <div>
+        <form [formGroup]="personneForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputLogin">Login :</label>
+                <input type="text" class="form-control" id="inputLogin" [(ngModel)]="personnecourant.login"
+                    formControlName="login" [ngClass]="{'is-invalid': submitted && f.login.errors}">
+            </div>
+            <div *ngIf="submitted && f.login.errors">
+                <label class="error">Veuillez entrer le login de la personne</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputMdp">Mot de passe :</label>
+                <input type="text" class="form-control" id="inputMdp" [(ngModel)]="personnecourant.mdp"
+                    formControlName="mdp" [ngClass]="{'is-invalid': submitted && f.mdp.errors}">
+            </div>
+            <div *ngIf="submitted && f.mdp.errors">
+                <label class="error">Veuillez entrer le mot de passe de la personne</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputNom">Nom :</label>
+                <input type="text" class="form-control" id="inputNom" [(ngModel)]="personnecourant.nom"
+                    formControlName="nom" [ngClass]="{'is-invalid': submitted && f.nom.errors}">
+            </div>
+            <div *ngIf="submitted && f.nom.errors">
+                <label class="error">Veuillez entrer le nom de la personne</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputRole">Rôle :</label>
+                <select class="form-control" id="inputRole" [(ngModel)]="rolecourant.id" formControlName="role"
+                    [ngClass]="{'is-invalid': submitted && f.role.errors}">
+                    <option *ngFor="let role of listRoles" [ngValue]="role.id">
+                        {{role.libelle}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.role.errors">
+                <label class="error">Veuillez sélectionner le rôle de la personne</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputZone">Zone :</label>
+                <select class="form-control" id="inputZone" [(ngModel)]="zonecourant.id" formControlName="zone"
+                    [ngClass]="{'is-invalid': submitted && f.zone.errors}">
+                    <option *ngFor="let zone of listZones" [ngValue]="zone.id">
+                        {{zone.nom}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.zone.errors">
+                <label class="error">Veuillez sélectionner la zone de la personne</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Modifier
+                    la personne</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="reset" class="btn btn-primary">Remettre à
+                        zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" [routerLink]="['/admin/listpersonne']" class="btn btn-primary">Retour à la
+                        racine</button>
+            </div>
+        </form>
+    </div>
+</div>

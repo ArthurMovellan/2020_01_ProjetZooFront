@@ -1,0 +1,51 @@
+<div class="recherche">
+    <input class="form-control mr-sm-2" type="text" name="search" [(ngModel)]="searchText" [(ngModel)]="searchText"
+      placeholder="Tapez votre recherche">
+  </div>
+  <table class="table" align = center>
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Espèce</th>
+        <th scope="col">Enclos</th>
+        <th scope="col">Nombre d'animaux</th>
+        <th scope="col">Nourriture</th>
+        <th scope="col">Actions sur l'animal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let animal of listAnimals| filter:searchText ; let i = index">
+        <th scope="row">{{animal.id}}</th>
+        <td>{{animal.espece}}</td>
+        <td>{{animal.enclos.nom}}</td>
+        <div *ngIf="!modif[i]">
+            <td>
+              {{animal.nbAnimal}}&nbsp;
+              <button class="btn btn-outline-secondary" type="button" (click)="dispform(i)">Modifier le nombre de cet animal</button>
+            </td>
+          </div>
+          <div *ngIf="modif[i]">
+            <form [formGroup]="animalForm" (ngSubmit)="onSubmit(animal.id, animal.nbAnimal)">
+              <div class="form-group col-lg-6">
+                <input type="number" class="form-control" id="inputNbAnimal" [(ngModel)]="animal.nbAnimal"
+                  formControlName="nbAnimal" [ngClass]="{'is-invalid': submitted && f.nbAnimal.errors}">
+              </div>
+              <div *ngIf="submitted && f.nbAnimal.errors">
+                <label class="error">Veuillez entrer le nombre de cet animal</label>
+              </div>
+              <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Modifier le nombre d'animaux</button>
+              </div>
+            </form>
+          </div>
+        <td>{{animal.nourriture.nom}}</td>
+        <td><button type="button" [routerLink]="['/admin/updateanimal', animal.id]" class="btn btn-warning"
+            name="boutonModif">Modifier</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" (click)="askfordel(animal.id,i)" class="btn btn-danger"
+            name="boutonDelete">Supprimer</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div align="center">
+      <button type="button" [routerLink]="['/admin']" class="btn btn-primary">Retour à la racine</button>
+  </div>

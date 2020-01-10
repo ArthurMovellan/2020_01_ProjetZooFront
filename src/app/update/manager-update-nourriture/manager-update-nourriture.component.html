@@ -1,0 +1,28 @@
+<div align="center">
+    <div>
+        <form [formGroup]="nourritureForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-lg-6">
+                <label for="inputNom">Nom :</label>
+                <input type="text" class="form-control" id="inputNom" [(ngModel)]="nourriturecourant.nom"
+                    formControlName="nom" [ngClass]="{'is-invalid': submitted && f.nom.errors}">
+            </div>
+            <div *ngIf="submitted && f.nom.errors">
+                <label class="error">Veuillez entrer le nom de la nourriture</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="inputStock">Stock :</label>
+                <input type="text" class="form-control" id="inputStock" [(ngModel)]="nourriturecourant.stock"
+                    formControlName="stock" [ngClass]="{'is-invalid': submitted && f.stock.errors}">
+            </div>
+            <div *ngIf="submitted && f.stock.errors">
+                <label class="error">Veuillez entrer le nombre de nourriture en stock</label>
+            </div>
+            <div class="form-group col-lg-6">
+                <button type="submit" class="btn btn-primary">Modifier la nourriture</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">Remettre à
+                    zéro</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" [routerLink]="['/manager/listnourriture']" class="btn btn-primary">Retour à la racine</button>
+            </div>
+        </form>
+    </div>
+</div>
