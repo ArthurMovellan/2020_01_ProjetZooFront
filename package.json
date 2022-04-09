@@ -27,7 +27,7 @@
     "@fullcalendar/timegrid": "^4.3.0",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ng2-search-filter": "^0.5.1",
     "ngx-tempusdominus-bootstrap": "^1.0.1",
     "remove-accents": "^0.4.2",
